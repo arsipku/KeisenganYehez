@@ -40,6 +40,7 @@
       23 => 'App\\Providers\\AuthServiceProvider',
       24 => 'App\\Providers\\EventServiceProvider',
       25 => 'App\\Providers\\RouteServiceProvider',
+      26 => 'Laravel\\Passport\\PassportServiceProvider',
     ),
     'aliases' => 
     array (
@@ -96,7 +97,7 @@
       ),
       'api' => 
       array (
-        'driver' => 'token',
+        'driver' => 'passport',
         'provider' => 'users',
         'hash' => false,
       ),
@@ -570,6 +571,11 @@
     'remote_sites_path' => '',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
+  ),
+  'passport' => 
+  array (
+    'private_key' => NULL,
+    'public_key' => NULL,
   ),
   'trustedproxy' => 
   array (
