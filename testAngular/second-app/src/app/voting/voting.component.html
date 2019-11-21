@@ -1,0 +1,26 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <h1 class="text-center ">Voting Page</h1>
+      <div class="input-group-prepend">
+        <input [formControlName]="'nama'" type="text" class="form-control" placeholder="Write Name" name="nama">
+        <input [formControlName]="'vote'" type="number" class="form-control" placeholder="Vote" name="vote">
+        <span class="input-group-text" (click)="onSubmit()">
+          <i class="material-icons">add</i></span>
+      </div>
+    </div>
+    <div class="data">
+      <ul class="list-unstyled">
+        <li *ngFor="let nama of sortedArray; let i = index">
+            <div class="row">
+             <h5>Nama kandidat : <strong>{{nama.nama}}</strong></h5>
+            </div>
+            <div class="row">
+              <p> Total Suara: {{nama.vote}}</p>
+            </div>
+          <button (click)="onDeleteItem(i)" class="material-icons">delete</button>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>

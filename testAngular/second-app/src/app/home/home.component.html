@@ -1,0 +1,87 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Super Hero Form</h1>
+    <form #superheroForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Super Hero Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Super Hero Name is required
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="weapon">Hero Weapon</label>
+        <select class="form-control" id="weapon" required [(ngModel)]="model.weapon" name="weapon" #weapon="ngModel">
+          <option *ngFor="let wp of weapons" [value]="wp">{{wp}}</option>
+        </select>
+        <div [hidden]="weapon.valid || weapon.pristine" class="alert alert-danger">
+          Weapon is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="speciality">Speciality</label>
+        <select class="form-control" id="speciality" required [(ngModel)]="model.speciality" name="speciality"
+          #speciality="ngModel">
+          <option *ngFor="let spec of specialities" [value]="spec">{{spec}}</option>
+        </select>
+        <div [hidden]="speciality.valid || speciality.pristine" class="alert alert-danger">
+          Speciality is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="realname">Real Name</label>
+        <input type="text" class="form-control" id="realname" [(ngModel)]="model.realname" name="realname">
+      </div>
+      <button type="submit" [disabled]="!superheroForm.form.valid" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newSuperHero(); superheroForm.reset()">New Super
+        Hero</button>
+    </form>
+  </div>
+
+
+  <!-- Ketika tombol submit ditekan, maka tampilan di bawah ini akan dijalankan -->
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">
+        <h5>Super Hero Name : </h5>
+      </div>
+      <div class="col-xs-9">
+        <p>{{model.name}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <h5> Real Name : </h5>
+      </div>
+      <div class="col-xs-9">
+        <p>{{model.realname}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <h5> Weapon : </h5>
+      </div>
+      <div class="col-xs-9">
+        <p> {{model.weapon}} </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <h5> Speciality : </h5>
+      </div>
+      <div class="col-xs-9">
+        <p> {{model.speciality}}</p>
+      </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+
+  </div>
+
+</div>
